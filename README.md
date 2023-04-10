@@ -1,4 +1,31 @@
 # Cross-lingual-Reasoning-Network-for-CLKGQA
 A Reasoning Network for multi-relation Question Answering over Cross-lingual Knowledge Graphs
 
-> Cross-lingual Knowledge Graphs-based Question Answering (CLKGQA) requires the question answering (QA) system to combine the knowledge graphs (KGs) in different languages to obtain answers to input questions. In previous works, the common idea is to merge Cross-lingual Knowledge Graphs (CLKGs) into a single KG through aligned entity pairs and then treat it as a traditional KG-based QA. However, as demonstrated by \citep{tan2023mlpq}, existing Entity Alignment (EA) models cannot generate highly accurate aligned entity pairs for CLKGs. Therefore, two issues need to be addressed in the CLKGQA task: (1) Remove the dependency of the QA model on the fused KG; (2) Improve the performance of the EA model in obtaining aligned entity pairs from locally isomorphic CLKGs. To solve the above two issues, this paper presents Cross-lingual Reasoning Network (CLRN), a novel multi-hop QA model that allows switching knowledge graphs at any stage of the multi-hop reasoning. Furthermore, we establish an iterative framework that combines CLRN and EA model, in which CLRN is used for extracting potential alignment triple pairs from CLKGs during the QA process. The extracted triple pairs provide pseudo-aligned entities, and the additional aligned entity pairs are used to mine missing relations between entities in CLKGs. These pseudo-aligned entity pairs and relations improve the performance of the EA model, resulting in higher accuracy in QA. Extensive experiments demonstrate the effectiveness of the proposed model, which outperforms the baseline approaches. Through iterative enhancement, the performance of the EA model has also been improved by > 1.0 in Hit@1 and Hit@10, and the improvement is statistically significant in the confidence interval of $p$<0.01. Moreover, our work discusses the correlation between QA and EA from the side of QA, which has reference value for the follow-up exploration of related communities. 
+# CLKGQA
+This is the repo hosting all the experiment code of the paper *"CLRN: A Reasoning Network for multi-relation Question Answering overCross-lingual Knowledge Graphs"*
+
+## Data
+   
+## Environment
+* cudatoolkit=10.2
+* pytorch==1.8.1
+* transformers==4.5.0
+* chinese_converter==1.0.2
+* jsonlines==2.0.0
+* auto_mix_prep==0.2.0
+* protobuf==3.15.8
+* python_Levenshtein==0.12.2
+
+> NVIDIA GeForce RTX 2080 GPU is used in our experiments
+## CLRA
+This module is consisted of multilingual-BERT and CLRN and a training pipeline to fine tune BERT and train the CLRN 
+simultaneously. The trained models are saved to the specified directory after the training is finished.
+```angular2html
+python train.py
+```
+## question_answering
+The question answering module utilizes the trained model from CLRA module and reason continuously across knowledge graphs 
+of different languages and save the generated equal paths and aligned entities as the answering result.
+```angular2html
+python main.py
+```
