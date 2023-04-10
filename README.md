@@ -5,7 +5,7 @@ A Reasoning Network for multi-relation Question Answering over Cross-lingual Kno
 This is the repo hosting all the experiment code of the paper *"CLRN: A Reasoning Network for multi-relation Question Answering overCross-lingual Knowledge Graphs"*
 
 ## Data
-https://github.com/tan92hl/Dataset-for-QA-over-Multilingual-KG.git
+[**MLPQ**](https://github.com/tan92hl/Dataset-for-QA-over-Multilingual-KG)
 
 ## Environment
 * cudatoolkit=10.2
